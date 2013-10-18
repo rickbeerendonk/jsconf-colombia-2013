@@ -1,0 +1,269 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+
+.hint {
+    display: none;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 200px;
+
+    background: rgba(0,0,0,0.5);
+    color: #EEE;
+    text-align: center;
+
+    font-size: 50px;
+    padding: 20px;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    -webkit-transform: translateY(400px);
+    -moz-transform:    translateY(400px);
+    -ms-transform:     translateY(400px);
+    -o-transform:      translateY(400px);
+    transform:         translateY(400px);
+
+    /*
+        Now let's imagine that the hint is visible and we want to fade it out and move out
+        of the screen.
+
+        So we define the transition on the opacity property with 1s duration and another
+        transition on transform property delayed by 1s so it will happen after the fade out
+        on opacity finished.
+
+        This way user will not see the hint moving down.
+    */
+    -webkit-transition: opacity 1s, -webkit-transform 0.5s 1s;
+    -moz-transition:    opacity 1s,    -moz-transform 0.5s 1s;
+    -ms-transition:     opacity 1s,     -ms-transform 0.5s 1s;
+    -o-transition:      opacity 1s,      -o-transform 0.5s 1s;
+    transition:         opacity 1s,         transform 0.5s 1s;
+}
+
+/*
+    Now we 'enable' the hint when presentation is initialized ...
+*/
+.impress-enabled .hint { display: block }
+
+/*
+    ... and we will show it when the first step (with id 'bored') is active.
+*/
+.impress-on-bored .hint {
+    /*
+        We remove the transparency and position the hint in its default fixed
+        position.
+    */
+    opacity: 1;
+
+    -webkit-transform: translateY(0px);
+    -moz-transform:    translateY(0px);
+    -ms-transform:     translateY(0px);
+    -o-transform:      translateY(0px);
+    transform:         translateY(0px);
+
+    /*
+        Now for fade in transition we have the oposite situation from the one
+        above.
+
+        First after 4.5s delay we animate the transform property to move the hint
+        into its correct position and after that we fade it in with opacity
+        transition.
+    */
+    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;
+    -moz-transition:    opacity 1s 5s,    -moz-transform 0.5s 4.5s;
+    -ms-transition:     opacity 1s 5s,     -ms-transform 0.5s 4.5s;
+    -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
+    transition:         opacity 1s 5s,         transform 0.5s 4.5s;
+}
+
+/*
+    And as the last thing there is a workaround for quite strange bug.
+    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.
+
+    Sometimes the element positioned in 3D (especially when it's moved back
+    along Z axis) is not clickable, because it falls 'behind' the <body>
+    element.
+
+    To prevent this, I decided to make <body> non clickable by setting
+    pointer-events property to `none` value.
+    Value if this property is inherited, so to make everything else clickable
+    I bring it back on the #impress element.
+
+    If you want to know more about `pointer-events` here are some docs:
+    https://developer.mozilla.org/en/CSS/pointer-events
+
+    There is one very important thing to notice about this workaround - it makes
+    everything 'unclickable' except what's in #impress element.
+
+    So use it wisely ... or don't use at all.
+*/
+.impress-enabled          { pointer-events: none }
+.impress-enabled #impress { pointer-events: auto }
+
+/* NForza */
+
+body {
+    background: lightgray;
+    font-family: 'Calibri', 'Open Sans', Arial, sans-serif;
+    font-size: 100px;
+    line-height: 1;
+    min-height: 740px;
+}
+
+li {
+    line-height: 1.2;
+}
+
+em {
+    color: orangered;
+}
+
+pre {
+    font-family: Consolas, monospace;
+    font-size: 36px;
+}
+
+table {
+    font-size: 36px;
+}
+
+tr:nth-child(odd) {
+    background: rgba(91, 169, 255, 0.24)
+}
+
+td {
+    padding: 8px;
+}
+
+.slide {
+    display: block;
+
+    width: 1000px;
+    height: 700px;
+    padding: 0px;
+
+    background-color: white;
+    background-image: url("../img/nforza-header.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+
+    color: #416370;
+    font-size: 40px;
+
+    overflow: hidden;
+}
+
+.slide_empty {
+    display: table;
+
+    width: 1000px;
+    height: 700px;
+    padding: 0px;
+
+    background-color: white;
+    border: 1px solid lightgray;
+
+    color: #416370;
+    font-size: 60px;
+
+    overflow: hidden;
+}
+
+.title_slide {
+    background-image: url("../img/nforza-title.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: 60px;
+    color: white;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+    position: absolute;
+    bottom: 320px;
+    left: 80px;
+    vertical-align: bottom;
+}
+
+.subtitle {
+    font-size: 60px;
+    position: absolute;
+    left: 80px;
+    top: 480px;
+}
+
+.title_img {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+.header {
+    color: white;
+    font-size: 50px;
+
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+
+    position: absolute;
+    left: 60px;
+    top: 80px;
+}
+
+.content {
+    position: absolute;
+    left: 60px;
+    top: 160px;
+    right: 20px;
+}
+
+.list {
+    position: absolute;
+    left: 24px;
+    top: 120px;
+    right: 20px;
+}
+
+.centered {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

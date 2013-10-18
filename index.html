@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1024"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>Building Maintainable Applications</title>
+    <meta name="description" content="Building Maintainable Applications. Talk given at JSConf Colombia 2013."/>
+    <meta name="author" content="Rick Beerendonk"/>
+    <link href="css/nforza-impress.css" rel="stylesheet"/>
+    <link href="css/jsconfcol13.css" rel="stylesheet"/>
+    <script src="js/run_prettify.js"></script>
+</head>
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+        version of this presentation.</p>
+
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress" data-transition-duration="500">
+
+<div id="title" class="step slide title_slide" data-x="0" data-y="0" data-scale="1">
+    <p class="title">Building<br/>Maintainable<br/>Applications</p>
+
+    <p class="subtitle">Rick Beerendonk<br/>@rickbeerendonk</p>
+    <img src="img/jsconfcol13.jpg" class="title_img"/>
+</div>
+
+<div id="rick-hillegom" class="step slide" data-x="0" data-y="-700" data-scale="1">
+    <img src="img/rick-bollenveld.jpg" height="700"/>
+</div>
+
+<div id="rick-medellin" class="step slide" data-x="1000" data-y="-700" data-scale="1">
+    <img id="rick-medellin-img" src="img/rick-silletero.jpg" width="1000"/>
+</div>
+
+<div id="sonrisa-siempre" class="step slide" data-x="2000" data-y="-700" data-scale="1">
+    <img id="sonrisa-siempre-img" src="img/nairo-novia.jpg" height="750"/>
+</div>
+
+<div id="sonrisa-casi-siempre" class="step slide" data-x="3000" data-y="-700" data-scale="1">
+    <img id="sonrisa-casi-siempre-img" src="img/nairo-rick.jpg" width="1200"/>
+</div>
+
+<div id="title2" class="step slide title_slide inactive_hidden" data-x="0" data-y="0" data-scale="1">
+    <p class="title">Building<br/>Maintainable<br/>Applications</p>
+
+    <p class="subtitle">Rick Beerendonk</p>
+</div>
+
+<div id="title-upside-down" class="step slide title_slide" data-x="0" data-y="700" data-rotate="180" data-scale="1">
+    <p class="title">Building<br/><em>Un</em>maintainable<br/>Applications</p>
+
+    <p class="subtitle">Rick Beerendonk</p>
+</div>
+
+<div id="unmaintainable_application" class="step slide" data-x="-1000" data-y="700" data-rotate="180">
+    <div class="header"><p>Unmaintainable application</p></div>
+    <div class="list">
+        <ul>
+            <li>One or little files/functions/objects</li>
+            <li>Global is the norm</li>
+            <li>No idea where to make changes</li>
+            <li>No idea what functionality is there purposely and what not</li>
+            <li>Changing code leads to bugs in other parts of the software</li>
+            <li>Adding features means touching code all over the place</li>
+        </ul>
+    </div>
+</div>
+
+<div id="unmaintainable_environment" class="step slide" data-x="-2000" data-y="700" data-rotate="180">
+    <div class="header"><p>Unmaintainable environment</p></div>
+    <div class="list">
+        <ul>
+            <li>Everybody uses his own style of coding</li>
+            <li>Colleagues unwilling to help because they:</li>
+            <ul>
+                <li>Have other deadlines to meet</li>
+                <li>Don’t want to share responsibility</li>
+                <li>Like to work alone</li>
+            </ul>
+            <li>Nobody practices, but just show up at work</li>
+        </ul>
+    </div>
+</div>
+
+<div id="productivity" class="step slide_empty" data-x="-3000" data-y="700" data-rotate="180">
+    <div class="centered">
+        <p>
+            Unmaintainable<br>
+            ==<br>
+            Unproductive
+        </p>
+    </div>
+</div>
+
+<div id="thomas" class="step slide" data-x="-4000" data-y="700" data-rotate="180">
+    <h1 class="header">How to build <em>un</em>maintainable applications?</h1>
+
+    <img src="img/ThomasHuijer.jpg" class="thomas"/>
+
+    <p class="thomas_name">Thomas Huijer</p>
+</div>
+
+<div id="thomas2" class="step slide inactive_hidden" data-x="-4000" data-y="700" data-rotate="180">
+    <h1 class="header">How to build <em>un</em>maintainable applications?</h1>
+
+    <img src="img/ThomasHuijer.jpg" class="thomas"/>
+
+    <p class="thomas_name">Thomas H.</p>
+
+    <div style="width: 160px; height: 40px; background: black; position: absolute; bottom: 290px; left: 200px;"></div>
+
+    <blockquote class="oval-speech-border thomas_quote">
+        <p>Use JavaScript!</p>
+    </blockquote>
+</div>
+
+<div id="thomas_learn" class="step slide" data-x="-5000" data-y="700" data-rotate="180">
+    <div class="header"><p>What does Thomas actually mean?</p></div>
+    <div class="list">
+        <ul>
+            <li>JS allows things that are problematic</li>
+            <ul>
+                <li>Forget var</li>
+                <li>Forget ;</li>
+                <li>Forget new</li>
+                <li>== (where “a == b” might not be “b == a”)</li>
+                <li>No static type checking</li>
+                <li>etc...</li>
+            </ul>
+            <li>Choose your tools wisely</li>
+        </ul>
+    </div>
+</div>
+
+<div id="standardize" class="step slide" data-x="-16000" data-y="0">
+    <div class="header"><p>Standardize</p></div>
+    <div class="content">
+        <p>Science takes off when everyone uses the same naming and measures in the same units: yards vs meters,
+            fahrenheit vs celcius, etc.
+            <br><br>
+            Use a standard:</p>
+        <ul>
+            <li>Naming conventions</li>
+            <li>Code conventions</li>
+            <li>Patterns</li>
+        </ul>
+    </div>
+</div>
+
+<div id="naming" class="step slide" data-x="-15000" data-y="0">
+    <div class="header"><p>Naming</p></div>
+    <div class="list">
+        <ul>
+            <li>Intention revealing</li>
+            <li>Pronounceable</li>
+            <li>Searchable</li>
+        </ul>
+    </div>
+</div>
+
+<div id="layout" class="step slide" data-x="-14000" data-y="0">
+    <div class="header"><p>Code layout</p></div>
+    <div class="content">
+    <pre class="prettyprint">
+var a = [1, 2, 3, 4, 5, 6];
+    </pre>
+    <pre class="prettyprint">
+for (var i = 0; i < a.length; i++) {
+    var double = 2 * a[i];
+    document.write(double);
+}
+    </pre>
+    <pre class="prettyprint">
+a.forEach(function (e) {
+    document.write(e + e);
+});
+    </pre>
+    </div>
+</div>
+
+<div id="layout-quote" class="step slide_empty" data-x="-13000" data-y="0">
+    <div class="centered">
+        <p style="font-size: 48px;">
+            “We know brains are brilliant at detecting patterns. So we should be reeeeeallly careful about the patterns
+            we were/are exposed to.”
+            </br></br>
+            Kathy Sierra
+        </p>
+    </div>
+</div>
+
+<div id="flexibility" class="step slide_empty" data-x="-12000" data-y="0">
+    <div class="centered">
+        <p style="font-size: 48px;">
+            Exchange current flexibility for future flexibility.
+            </br></br>
+            Limit yourself!
+        </p>
+    </div>
+</div>
+
+<div id="options" class="step slide" data-x="-11000" data-y="0">
+    <div class="header"><p>Real Options</p></div>
+    <div class="list">
+        <ol>
+            <li>Options have value</li>
+            <li>Options expire</li>
+            <li>Never commit early unless you know why</li>
+        </ol>
+        <br>
+        Technical Debt is a sold option!
+    </div>
+</div>
+
+<div id="simple-vs-easy1" class="step slide" data-x="-10000" data-y="0">
+    <div class="header"><p>Simple vs Easy</p></div>
+    <div class="content">
+        <p><em>Simple</em><br>
+            One role, task, concept or dimension<br>
+            Objective
+        </p>
+
+        <p><br></p>
+
+        <p><em>Easy</em><br>
+            Near at hand, near to our understanding, familiar<br>
+            Subjective
+        </p>
+    </div>
+</div>
+
+<div id="simple-vs-easy2" class="step slide" data-x="-9000" data-y="0">
+    <div class="header"><p>Simple vs Easy</p></div>
+    <div class="content">
+        <table>
+            <tr>
+                <th>
+                    Easy
+                </th>
+                <th>
+                    Simple
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <pre class="prettyprint">
+function DoAll() {
+    DoA code;
+    DoB code;
+    DoC code;
+}
+
+DoAll();</pre>
+                </td>
+                <td>
+                    <pre class="prettyprint">
+function DoA() {}
+function DoB() {}
+function DoC() {}
+
+DoA();
+DoB();
+DoC();</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>A+B+C</td>
+                <td>A, B, C, A+B, A+C, B+C, A+B+C</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="simple-vs-easy3" class="step slide" data-x="-8000" data-y="0">
+    <div class="header"><p>Is state simple?</p></div>
+    <div class="content">
+        <pre class="prettyprint">
+function change(obj) {
+    obj.test = "No longer hola!";
+}
+
+var a = { test: "hola"};
+
+var b = a;
+change(b);
+
+document.write(a.test);
+        </pre>
+        <p><em>// result: "No longer hola!"</em></p>
+    </div>
+</div>
+
+<div id="simple-vs-easy4" class="step slide" data-x="-7000" data-y="0">
+    <div class="header"><p>Simple?</p></div>
+    <div class="list">
+        <ul>
+            <li>State, complects value and time (see var)</li>
+            <li>Everything that touches state get complected</li>
+            <li>Object, complects state and identity</li>
+            <li>Methods, function and state</li>
+            <li>Inheritance, complects types</li>
+            <li>Imperative loops, complects what and how</li>
+            <li>Frameworks might complect your code with the framework</li>
+            <br>
+            Use objects in JS as namespaces with pure functions inside is okay.
+        </ul>
+    </div>
+</div>
+
+<div id="modules" class="step slide" data-x="-6000" data-y="0">
+    <div class="header"><p>Separation of concerns</p></div>
+    <div class="content">
+        <p>Make reasoning about code possible. Limit the number of things you need to remember. Make you scope
+            small.</p>
+        <ul>
+            <li>Use modules</li>
+            <li>Use separate files</li>
+            <li>Minimize coupling</li>
+            <li>Use dependency injection</li>
+            <li>Use queues instead of direct calls</li>
+        </ul>
+    </div>
+</div>
+
+<div id="dishwasher1" class="step slide" data-x="-5000" data-y="0">
+    <div class="header"><p>Don’t take code for granted</p></div>
+    <div class="content">
+        <p>We think all code was written thoughtfully and purposely.</p>
+
+        <img src="img/vaatwasser4.jpg" height="500"/>
+    </div>
+</div>
+
+<div id="dishwasher2" class="step slide" data-x="-4000" data-y="0" data-scale="1">
+    <img src="img/vaatwasser3.jpg" width="1000"/>
+</div>
+
+<div id="review" class="step slide" data-x="-3000" data-y="0">
+    <div class="header"><p>Reviews</p></div>
+    <div class="list">
+        <ul>
+            <li>Catch bugs early</li>
+            <li>Improves design</li>
+            <li>Collaboration</li>
+            <br/>
+            <li>Formal vs informal</li>
+            <li>Let developer explain code</li>
+            <li>Be gentle</li>
+        </ul>
+    </div>
+</div>
+
+<div id="future" class="step slide" data-x="-2000" data-y="0">
+    <div class="header"><p>JS as assembly language</p></div>
+    <div class="content">
+        <p>Consider other languages that promote good coding by design.
+            <br><br>
+            ClojureScript:</p>
+        <ul>
+            <li>Removed mutable state as default</li>
+            <li>Persistent collections</li>
+            <li>Allow for easier concurrent programming</li>
+        </ul>
+    </div>
+
+</div>
+
+<div id="js-conclusion" class="step slide" data-x="-1000" data-y="0">
+    <div class="header"><p>JavaScript</p></div>
+    <div class="list">
+        <ul>
+            <li>Leaves options open</li>
+            <ul>
+                <li>Runs server and client side</li>
+                <li>Runs on any device</li>
+                <li>Runs on any platform</li>
+            </ul>
+            <li>Thomas still hopes for C# in the browser.</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- TEAM -->
+
+<div id="team" class="step slide" data-x="-6000" data-y="-700">
+    <div class="header"><p>Team</p></div>
+    <div class="list">
+        <ul>
+            <li>Keep them small</li>
+            <li>Opt-in, Intrinsic motivation</li>
+            <li>Attitude, Accept failure</li>
+        </ul>
+    </div>
+</div>
+
+<div id="belbin" class="step slide" data-x="-5000" data-y="-700">
+    <div class="header"><p>Team roles (Belbin)</p></div>
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    Shaper
+                </td>
+                <td>
+                    Challenges the team to improve.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Implementer
+                </td>
+                <td>
+                    Puts ideas into action.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Completer Finisher
+                </td>
+                <td>
+                    Ensures thorough, timely completion.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Coordinator
+                </td>
+                <td>
+                    Acts as a chairperson.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Team Worker
+                </td>
+                <td>
+                    Encourages cooperation.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Resource Investigator
+                </td>
+                <td>
+                    Explores outside opportunities.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Plant
+                </td>
+                <td>
+                    Presents new ideas and approaches.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Monitor-Evaluator
+                </td>
+                <td>
+                    Analyzes the options.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Specialist
+                </td>
+                <td>
+                    Provides specialized skills.
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="rick-coach" class="step slide" data-x="-4000" data-y="-700" data-scale="1">
+    <img id="rick-coach-img" src="img/rick-coach.jpg" width="1000"/>
+</div>
+
+<div id="coaching" class="step slide" data-x="-3000" data-y="-700">
+    <div class="header"><p>Coaching</p></div>
+    <div class="list">
+        <ul>
+            <li>Bad coach: Improves effect</li>
+            <li>Mediocre coach: Improves cause</li>
+            <li>Great coach: Improves the pupil</li>
+        </ul>
+        <ul>
+            <li>Ask (listen), don’t tell</li>
+            <li>Focus on the people, not on tasks</li>
+            <li>Let people coach themselves</li>
+        </ul>
+    </div>
+</div>
+
+<div id="sustainability" class="step slide" data-x="-2000" data-y="-700">
+    <div class="header"><p>Sustainability</p></div>
+    <div class="list">
+        <ul>
+            <li>Learn software development</li>
+            <li>Learn how to solve problems</li>
+            <li>Learn how to be a coach</li>
+            <li>Teach!</li>
+            <br>
+            Always remain curious, authentic and creative!
+        </ul>
+    </div>
+</div>
+
+<div id="feeling-good" class="step slide_empty" data-x="-1000" data-y="-700">
+    <div class="centered">
+        <p style="font-size: 48px;">
+            "Productivity is a by-product of feeling good"
+            </br></br>
+            Daniel Mezick
+        </p>
+    </div>
+</div>
+
+<div id="overview" class="step" data-x="-6000" data-y="0" data-scale="18">
+</div>
+
+</div>
+
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    }
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

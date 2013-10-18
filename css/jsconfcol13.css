@@ -1,0 +1,163 @@
+blockquote {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+.thomas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 500px;
+}
+
+.thomas_name {
+    position: absolute;
+    bottom: 20px;
+    left: 500px;
+}
+
+.thomas_quote {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    width: 400px;
+}
+
+.inactive_hidden.future, .inactive_hidden.past {
+    opacity: 0;
+}
+
+/* ============================================================================================================================
+== OVER SPEECH BUBBLE, EMPTY, WITH BORDER
+== Source: http://nicolasgallagher.com/pure-css-speech-bubbles/
+** ============================================================================================================================ */
+
+.oval-speech-border {
+    position: relative;
+    padding: 70px 30px;
+    margin: 1em auto 60px;
+    border: 10px solid orangered;
+    text-align: center;
+    /* css3 */
+    /*
+    NOTES:
+    -webkit-border-radius:240px 140px; // produces oval in safari 4 and chrome 4
+    -webkit-border-radius:240px / 140px; // produces oval in chrome 4 (again!) but not supported in safari 4
+    Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+    */
+    -webkit-border-top-left-radius: 240px 140px;
+    -webkit-border-top-right-radius: 240px 140px;
+    -webkit-border-bottom-right-radius: 240px 140px;
+    -webkit-border-bottom-left-radius: 240px 140px;
+    -moz-border-radius: 240px / 140px;
+    border-radius: 240px / 140px;
+}
+
+/* creates larger curve */
+.oval-speech-border:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    bottom: -40px;
+    right: 50%;
+    width: 50px;
+    height: 30px;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: orangered;
+    margin-right: -10px;
+    background: transparent;
+    /* css3 */
+    -webkit-border-bottom-right-radius: 80px 50px;
+    -moz-border-radius-bottomright: 80px 50px;
+    border-bottom-right-radius: 80px 50px;
+    /* reduce the damage in FF3.0 */
+    display: block;
+}
+
+/* creates smaller curve */
+.oval-speech-border:after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    bottom: -40px;
+    right: 50%;
+    width: 20px;
+    height: 30px;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: orangered;
+    margin-right: 20px;
+    background: transparent;
+    /* css3 */
+    -webkit-border-bottom-right-radius: 40px 50px;
+    -moz-border-radius-bottomright: 40px 50px;
+    border-bottom-right-radius: 40px 50px;
+    /* reduce the damage in FF3.0 */
+    display: block;
+}
+
+/* creates a small circle to produce a rounded point where the two curves meet */
+.oval-speech-border > :first-child:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -40px;
+    right: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 45px;
+    background: orangered;
+    /* css3 */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* creates a white rectangle to cover part of the oval border*/
+.oval-speech-border > :first-child:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -10px;
+    right: 50%;
+    width: 30px;
+    height: 15px;
+    background: #fff;
+}
+
+#rick-medellin-img {
+    -webkit-transform: translateY(-350px);
+    -moz-transform: translateY(-350px);
+    -ms-transform: translateY(-350px);
+    -o-transform: translateY(-350px);
+    transform: translateY(-350px);
+}
+
+#sonrisa-siempre-img {
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
+    transform: translateY(-50px);
+}
+
+#sonrisa-casi-siempre-img {
+    -webkit-transform: translate(-100px, -50px);
+    -moz-transform: translate(-100px, -50px);
+    -ms-transform: translate(-100px, -50px);
+    -o-transform: translate(-100px, -50px);
+    transform: translate(-100px, -50px);
+}
+
+#rick-coach-img {
+    -webkit-transform: translateY(-25px);
+    -moz-transform: translateY(-25px);
+    -ms-transform: translateY(-25px);
+    -o-transform: translateY(-25px);
+    transform: translateY(-25px);
+}
